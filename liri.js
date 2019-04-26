@@ -49,6 +49,9 @@ const getConcert = _ =>{
 
 const getSpotifty = () =>{
     let song = x
+    if (song === ''){
+        song = 'The Sign Ace of Base'
+    }
     spotify.search({ type: 'track', query: song }, function(err, data) {
         if (err) {
           return console.log('Error occurred: ' + err);

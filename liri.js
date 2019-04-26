@@ -7,7 +7,6 @@ const axios = require('axios')
 let getThis = process.argv[2]
 let x = process.argv.splice(3, process.argv.length).join(' ')
 
-// 3, process.argv.length).join(' ')
 const getMovie = () =>{
     axios.get(`http://www.omdbapi.com/?t=${x}&apikey=trilogy`)
     .then(r => {
@@ -26,8 +25,16 @@ const getMovie = () =>{
 }).catch(e => console.log(e))
 }
 
+const getConcert = _ =>{
+    axios.get(`https://rest.bandsintown.com/artists/${x}/events?app_id=codingbootcamp`)
+        .then(r => {
+            console.log(r.data)
+        }).catch(e => console.log(e))
+}
+
 switch(getThis){
     case'concert-this':
+    getConcert();
     break
     case 'spotify-this':
     spotifyThis();

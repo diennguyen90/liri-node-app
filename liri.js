@@ -4,6 +4,11 @@ const Spotify = require('node-spotify-api');
 const axios = require('axios')
 // const myMovie = require('./movies.js')
 
+
+var spotify = new Spotify({
+    id: '1f9b083ce70445d5aaa86e147ad46f7e',
+    secret: 'fbadc9585f0f42a595b70a9e41697cf1'
+})  
 let getThis = process.argv[2]
 let x = process.argv.splice(3, process.argv.length).join(' ')
 
@@ -40,12 +45,31 @@ const getConcert = _ =>{
         }).catch(e => console.log(e))
 }
 
+const getSpotifty = () =>{
+    spotify.search({ type: 'track', query: x }, function(err, data) {
+        if (err) {
+          return console.log('Error occurred: ' + err);
+        }
+        // console.log(data.tracks.items)
+        let res = data.tracks.items
+        console.log(res.artists)
+        for(let i = 0;i <i <res.length;i++){
+      console.log(`
+      Artist: ${res[i].artists}
+      Name: ${res[i].name}
+      Link: ${res[i].external_urls.spotify}
+      Album: ${res[i].album.name}
+      `); 
+        }
+      });
+}
+
 switch(getThis){
     case'concert-this':
     getConcert();
     break
     case 'spotify-this':
-    spotifyThis();
+    getSpotifty();
     break
     case 'movie-this':
     getMovie();

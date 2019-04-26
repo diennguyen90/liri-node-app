@@ -15,7 +15,11 @@ let getThis = process.argv[2]
 let x = process.argv.splice(3, process.argv.length).join(' ')
 
 const getMovie = () =>{
-    axios.get(`http://www.omdbapi.com/?t=${x}&apikey=trilogy`)
+    let movie = x
+    if(movie === ''){
+        movie = 'Mr Nobdy'
+    }
+    axios.get(`http://www.omdbapi.com/?t=${movie}&apikey=trilogy`)
     .then(r => {
         console.log(x)
         // console.log(r.data)

@@ -17,7 +17,7 @@ let x = process.argv.splice(3, process.argv.length).join(' ')
 const getMovie = () =>{
     let movie = x
     if(movie === ''){
-        movie = 'Mr Nobdy'
+        movie = 'Mr. Nobody,'
     }
     axios.get(`http://www.omdbapi.com/?t=${movie}&apikey=trilogy`)
     .then(r => {
@@ -34,6 +34,7 @@ const getMovie = () =>{
       Actors: ${r.data.Actors}
       `)
 }).catch(e => console.log(e))
+    
 }
 
 const getConcert = _ =>{

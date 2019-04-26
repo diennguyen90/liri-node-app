@@ -10,3 +10,4 @@
 
 
 ## Querying list of tracks from spotify API
+![image](images/img3.png)

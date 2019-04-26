@@ -2,8 +2,10 @@ require("dotenv").config();
 const keys = require("./key.js");
 const Spotify = require('node-spotify-api');
 const axios = require('axios')
+// Couldnt get the module exports to work
 // const myMovie = require('./movies.js')
-
+// const mySpoift = requre('./spotify.js)
+// const myBand = require('./concert.js)
 
 var spotify = new Spotify({
     id: '1f9b083ce70445d5aaa86e147ad46f7e',
@@ -46,7 +48,8 @@ const getConcert = _ =>{
 }
 
 const getSpotifty = () =>{
-    spotify.search({ type: 'track', query: x }, function(err, data) {
+    let song = x
+    spotify.search({ type: 'track', query: song }, function(err, data) {
         if (err) {
           return console.log('Error occurred: ' + err);
         }
@@ -54,6 +57,8 @@ const getSpotifty = () =>{
         let res = data.tracks.items
         console.log(res.artists)
         for(let i = 0;i <i <res.length;i++){
+            // having issue with returning artist objects
+            // need to fix
       console.log(`
       Artist: ${res[i].artists}
       Name: ${res[i].name}

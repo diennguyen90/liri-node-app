@@ -1,16 +1,19 @@
 let axios = require('axios')
 
-const getMovie =() =>{
-    console.log('hi')
+const getMovie = () =>{
     axios.get(`http://www.omdbapi.com/?t=${x}&apikey=trilogy`)
-    .then(({ data: { Title, Year, Rated, Runtime, Director, Genre } }) => {
+    .then(r => {
+        console.log(x)
+        // console.log(r.data)
         console.log(`
-      Title: ${Title}
-      Year: ${Year}
-      Rated: ${Rated}
-      Runtime: ${Runtime}
-      Director: ${Director}
-      Genre: ${Genre}
+      Title: ${r.data.Title}
+      Year: ${r.data.Year}
+      IMBD: ${r.data.imbdRating}
+      Rotten Tomatoes: ${r.data.Ratings[1].Value}
+      Country: ${r.data.Country}
+      Language: ${r.data.Language}
+      Plot: ${r.data.Plot}
+      Actors: ${r.data.Actors}
       `)
 }).catch(e => console.log(e))
 }
